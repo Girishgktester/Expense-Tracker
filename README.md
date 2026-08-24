@@ -26,10 +26,10 @@ All records are stored in the browser using `localStorage`. This keeps the proje
 
 The project follows a simple client-side architecture:
 
-1. `index.html` defines the semantic dashboard, form fields, filters, summary cards, and expense list.
-2. `styles.css` defines the responsive layout, visual design tokens, form states, focus styles, and mobile breakpoints.
-3. `app.js` owns application state, validation, local storage, filtering, calculations, rendering, and event handling.
-4. The browser loads the static files directly. There is no API server, database, authentication flow, or build step.
+1. `index.html` provides the Vite HTML entry point and React mount element.
+2. `src/main.jsx` defines the dashboard components, state, validation, local storage, filtering, calculations, and event handling.
+3. `src/styles.css` defines the responsive layout, visual design tokens, form states, focus styles, and mobile breakpoints.
+4. Vite bundles the React application for static hosting. There is no API server, database, or authentication flow.
 5. Vercel serves the project as a static website from the GitHub repository.
 
 ## Technology Stack
@@ -113,7 +113,7 @@ The app supports a shortcut that asks for a category and amount, then adds the e
 4. Add a **Text** action containing this URL, replacing the bracketed values with the Shortcut variables:
 
 ```text
-https://pocket-ledger-kq7bjkjhi-girishgktesters-projects.vercel.app/?quickAdd=1&category=[category]&amount=[amount]
+https://pocket-ledger-ruby.vercel.app/?quickAdd=1&category=[category]&amount=[amount]
 ```
 
 5. Add **Open URLs** and pass it the Text action result.
@@ -164,7 +164,7 @@ To deploy with an existing Vercel account:
 ## Links
 
 - GitHub repository: [Girishgktester/Expense-Tracker](https://github.com/Girishgktester/Expense-Tracker)
-- Live application: To be added after Vercel deployment
+- Live application: [pocket-ledger-ruby.vercel.app](https://pocket-ledger-ruby.vercel.app)
 - Development plan: [PLAN.md](PLAN.md)
 
 ## Assignment Deliverables
@@ -172,6 +172,6 @@ To deploy with an existing Vercel account:
 - Application name: Pocket Ledger
 - Short description: A responsive INR expense tracker with local browser persistence.
 - Source code: GitHub repository linked above
-- Deployment: Vercel public URL to be added after deployment
+- Deployment: [pocket-ledger-ruby.vercel.app](https://pocket-ledger-ruby.vercel.app)
 - Plan: [PLAN.md](PLAN.md)
 - Screenshot: Capture the running dashboard after local or production verification
