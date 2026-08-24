@@ -34,9 +34,11 @@ The project follows a simple client-side architecture:
 
 ## Technology Stack
 
+- React for component-based UI and state updates
+- Vite for development server and production bundling
 - HTML5 for accessible page structure
 - CSS3 for responsive styling and layout
-- Vanilla JavaScript for application behavior
+- Modern JavaScript (ES modules) for application behavior
 - Browser `localStorage` for persistence
 - Git and GitHub for version control and source hosting
 - Vercel for public static deployment
@@ -45,9 +47,11 @@ The project follows a simple client-side architecture:
 
 ```text
 Expense Tracker/
-├── index.html    # Application page and user interface
-├── styles.css    # Responsive design and component styles
-├── app.js        # Expense state, validation, storage, and rendering
+├── index.html    # Vite HTML entry point
+├── src/main.jsx  # React dashboard, state, validation, storage, and rendering
+├── src/styles.css # Responsive design and component styles
+├── package.json  # npm scripts and React/Vite dependencies
+├── vite.config.js # Vite React plugin configuration
 ├── PLAN.md       # Development plan and verification checklist
 ├── README.md     # Project documentation
 ├── vercel.json   # Vercel deployment configuration
@@ -61,9 +65,24 @@ Expense Tracker/
 - Python 3, or another local static web server
 - A modern web browser
 
-### Start the application
+### Install and start the application
 
 Open PowerShell in the project directory and run:
+
+```powershell
+npm install
+npm run dev
+```
+
+Open the local URL shown by Vite, normally `http://localhost:5173`.
+
+To create a production build:
+
+```powershell
+npm run build
+```
+
+The project can also be served by a simple static server after building. The older Python command is still useful for the original static files, but the Vite command is the recommended development workflow.
 
 ```powershell
 python -m http.server 8000
@@ -83,6 +102,25 @@ The project can also be opened directly through `index.html`, but a local server
 6. Review the new record in **Expense history** and the updated summary cards.
 7. Use the edit icon to update a record or the delete icon to remove it after confirmation.
 8. Use search, category, and month filters to narrow the visible records.
+
+## iPhone Back Tap Quick Add
+
+The app supports a shortcut that asks for a category and amount, then adds the expense automatically.
+
+1. Open the **Shortcuts** app and tap **+**.
+2. Add **Choose from Menu** with the options `Food`, `Transport`, `Bills`, `Shopping`, `Health`, `Entertainment`, and `Other`. Store the selected value as `category`.
+3. Add **Ask for Input**, choose **Number**, and prompt for `Amount`. Store the result as `amount`.
+4. Add a **Text** action containing this URL, replacing the bracketed values with the Shortcut variables:
+
+```text
+https://pocket-ledger-kq7bjkjhi-girishgktesters-projects.vercel.app/?quickAdd=1&category=[category]&amount=[amount]
+```
+
+5. Add **Open URLs** and pass it the Text action result.
+6. Name the shortcut **Quick Expense**.
+7. Go to **Settings > Accessibility > Touch > Back Tap > Double Tap** and select **Quick Expense**.
+
+Double-tapping the back of the iPhone will now ask for the category and amount, open Pocket Ledger, and add a `Quick expense` dated today. The URL is cleared after processing so refreshing the page does not add a duplicate.
 
 ## Data and Privacy
 
